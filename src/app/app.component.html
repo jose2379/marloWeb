@@ -1,31 +1,24 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center" class="container">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2 class="container">Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a class="text-black" target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-<ul>
-    <div *ngFor="let obra of coursesObservable | async">
-        <div class="alert alert-info" type="info">
-            <h3><a href="#">{{obra.titulo}}</a> </h3>
-            <p>{{obra.tecnica}}</p>
-            <div>
-                <a href="{{obra.url}}" target="_blank" class="btn btn-danger">Go To Course</a>
-            </div>
-        </div> 
-    </div>
-</ul>
 
+<div class="container-fluid p-0 text-white" [ngStyle]="{ 'background-image': background_color }">
+  <div class="row bg-gradient-dark fixed-top m-0 h-100">
+      <div class="col-5 mt-auto mr-0 p-3 text-right gradient-rl">
+        <h3 class="">{{ arrObras[obraVista].titulo }}</h3>
+        <h5>{{ arrObras[obraVista].tecnica }}<small class="ml-2">{{ arrObras[obraVista].fecha }}</small></h5>
+      </div>
+    <div (click)="onRedes('ded')" class="col-3 foto-home mt-auto mr-0 h-50"></div>
+    <div class="col-4 row gradient-lr h-100 m-0">
+      <div (click)="onRedes('dsds')" class="col-6 mt-auto h-25">
+        <h1 class="mt-auto">mARLó<br><small>Arte Sensorial</small></h1>
+        <h4 class="mt-3">es el nombre artístico de</h4><h3>María López García.</h3>
+      </div>
+      <div class="col-6 mt-auto">
+        <h5 class="">Natural de Guadalcázar (Córdoba, España), Marlò se inicia en el arte a los 19 años, aunque la eclosión de su obra comienza a los 32, durante su etapa en Los Alpes. Desde entonces, ha transitado la pintura y la escultura con las más variadas técnicas y un estilo personalísimo.<br><br>Tanto su formación, eminentemente autodidacta, como su recorrido se alejan de los senderos habituales. Estamos ante una creadora de pulsión racial y crudeza, una artista clásica en su lealtad creativa y contemporánea en sus formas.<br><br>Marlò recibe las influencias más directas de la pintura de Picasso, Kandinski, Klee, Miró o Chagall, pero sus composiciones trascienden lo bidimensional de la pintura para incorporar elementos cotidianos en una suerte de relieve hiperrealista: herramientas, alimentos, fármacos. Así, hallamos en sus obras ese equilibrio extraño entre sofisticación y naïvité que ha forjado su estilo, el que ella misma llama Abstractismo sensorial.</h5>
+      </div>
+      <div class="col-12 d-flex">
+        <button *ngFor="let red of arrRedes" class="btn bg-transparent text-white" (click)="onRedes(red.urlSalida, red.target)" title="{{red.titulo}}">
+          <fa name="{{red.icono}}" size="2x">{{red.titulo}}</fa>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

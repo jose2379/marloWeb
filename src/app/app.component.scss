@@ -1,0 +1,35 @@
+// @import "../../node_modulesn/compass-mixins/lib/compass";
+.container-fluid{
+    height: 100vh;
+    // background-image: url('https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2FWhatsApp%20Image%202017-03-28%20at%2010.24.57.jpeg?alt=media&amp;token=09f079e6-7ebe-4905-8c0a-344d76780c7c');
+    background-size: cover;
+    background-position: center;
+    // .bgImg{
+        // background-image: url('https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2FWhatsApp%20Image%202017-03-28%20at%2010.24.57.jpeg?alt=media&amp;token=09f079e6-7ebe-4905-8c0a-344d76780c7c');
+        // background-image: url('https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2FIMG-20170312-WA0010.jpg?alt=media&amp;token=63e8d5e5-a628-476a-9e86-f8ae2a7c0349');
+        // background-image: url('https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2Fbeautiful.jpg?alt=media&token=ac827967-7c0d-4c93-932f-8cb3480b2913');
+    //     height: 100vh;
+    //     width: 100vw;
+    //     position: absolute;
+    //     z-index: 0;
+    //     opacity: 0.5;
+    // }
+    .foto-home{
+        background-image: url('../assets/images/foto_home.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .gradient-lr{
+        background: -moz-linear-gradient(left, rgba(0,0,0,0.8) 0%, rgba(0,0,0, 0.7) 40%, rgba(0,0,0, 0.5) 75%, rgba(0,0,0, 0.3) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(0,0,0,0.8) 0%,rgba(0,0,0, 0.7) 40%,rgba(0,0,0, 0.5) 75%,rgba(0,0,0, 0.3) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(0,0,0,0.8) 0%,rgba(0,0,0, 0.7) 40%,rgba(0,0,0, 0.5) 75%,rgba(0,0,0, 0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+    }
+    .gradient-rl{
+        background: -moz-linear-gradient(right, rgba(0,0,0,0.8) 0%, rgba(0,0,0, 0.7) 40%, rgba(0,0,0, 0.5) 75%, rgba(0,0,0, 0.3) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(right, rgba(0,0,0,0.8) 0%,rgba(0,0,0, 0.7) 40%,rgba(0,0,0, 0.5) 75%,rgba(0,0,0, 0.3) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to left, rgba(0,0,0,0.8) 0%,rgba(0,0,0, 0.7) 40%,rgba(0,0,0, 0.5) 75%,rgba(0,0,0, 0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+    }
+}
+// <img _ngcontent-bpc-5="" class="img-responsive" ng-reflect-src="https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2FWhatsApp%20Image%202017-03-28%20at%2010.24.57.jpeg?alt=media&amp;token=09f079e6-7ebe-4905-8c0a-344d76780c7c" src="https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/galeria%2Fprincipal%2FWhatsApp%20Image%202017-03-28%20at%2010.24.57.jpeg?alt=media&amp;token=09f079e6-7ebe-4905-8c0a-344d76780c7c" ng-reflect-alt="WhatsApp Image 2017-03-28 at 10.24.57.jpeg" alt="WhatsApp Image 2017-03-28 at 10.24.57.jpeg">

@@ -1,5 +1,30 @@
+<div class="container-fluid p-0 bg-dark">
+  <div class="fixed-top row text-white">
+    <div class="col col-md-6 ml-md-auto gradient-cabecera text-center">
+      <h3 class="pt-3 p-0 m-1">mARLó<br class="d-sm-none d-md-block"><small class="ml-2">Arte Sensorial</small></h3>
+      <h6 class="mt-0"><small class="mr-2">el nombre artístico de</small><br class="d-sm-none d-md-block">María López García.</h6>
+    </div>
+  </div>
+  <div class="foto-fondo" [ngStyle]="{ 'background-image': imagen_fondo }"></div>
+  <div class="container-fluid text-white h-50">
+    <div class="row h-100">
+      <div class="col-12 col-md-6 ml-auto pt-3 text-center parrafo-home gradient-bottom">
+        <h6 class=""><small>Natural de Guadalcázar (Córdoba, España), mARLò se inicia en el arte a los 19 años, aunque la eclosión de su obra comienza a los 32, durante su etapa en Los Alpes. Desde entonces, ha transitado la pintura y la escultura con las más variadas técnicas y un estilo personalísimo.<br><br>Tanto su formación, eminentemente autodidacta, como su recorrido se alejan de los senderos habituales. Estamos ante una creadora de pulsión racial y crudeza, una artista clásica en su lealtad creativa y contemporánea en sus formas.<br><br>Marlò recibe las influencias más directas de la pintura de Picasso, Kandinski, Klee, Miró o Chagall, pero sus composiciones trascienden lo bidimensional de la pintura para incorporar elementos cotidianos en una suerte de relieve hiperrealista: herramientas, alimentos, fármacos. Así, hallamos en sus obras ese equilibrio extraño entre sofisticación y naïvité que ha forjado su estilo, el que ella misma llama Abstractismo sensorial.</small></h6>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-md-block fixed-bottom foto-home h-50 w-25"></div>
+  <div class="fixed-bottom row text-white">
+    <div class="col-12 col-md-6 ml-md-auto p-1 pt-3 text-center gradient-bottom">
+      <button *ngFor="let red of arrRedes" class="btn bg-transparent text-white" (click)="onRedes(red.urlSalida, red.target)" title="{{red.titulo}}">
+        <fa name="{{red.icono}}" size="2x">{{red.titulo}}</fa>
+      </button>
+    </div>
+  </div>
+</div>
 
-<div class="container-fluid p-0 text-white" [ngStyle]="{ 'background-image': background_color }">
+
+<!-- <div class="invisible container-fluid p-0 text-white" [ngStyle]="{ 'background-image': imagen_fondo }">
   <div class="row bg-gradient-dark fixed-top m-0 h-100">
       <div class="col-5 mt-auto mr-0 p-3 text-right gradient-rl">
         <h3 class="">{{ arrObras[obraVista].titulo }}</h3>
@@ -7,7 +32,7 @@
       </div>
     <div (click)="onRedes('ded')" class="col-3 foto-home mt-auto mr-0 h-50"></div>
     <div class="col-4 row gradient-lr h-100 m-0">
-      <div (click)="onRedes('dsds')" class="col-6 mt-auto h-25">
+      <div class="col-6 mt-auto h-25">
         <h1 class="mt-auto">mARLó<br><small>Arte Sensorial</small></h1>
         <h4 class="mt-3">es el nombre artístico de</h4><h3>María López García.</h3>
       </div>
@@ -21,4 +46,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

@@ -18,6 +18,8 @@ interface Redes {
   target?: string;
 }
 
+const urlFirebase  = 'https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
   arrObras: Obra[];
   arrRedes: Redes[];
   obraVista: number;
-  background_color: string;
+  imagen_fondo: string;
 
   // items: AngularFireList<any[]>;
 
@@ -54,6 +56,7 @@ export class AppComponent implements OnInit {
         titulo: '"Grapada"',
         tecnica: 'Grapas sobre cartulina.',
         fecha: 'Noviembre 16.',
+        // tslint:disable-next-line:max-line-length
         urlImagen: 'galeria%2Fprincipal%2FWhatsApp%20Image%202017-03-28%20at%2010.24.57.jpeg?alt=media&token=09f079e6-7ebe-4905-8c0a-344d76780c7c'
       },
       {
@@ -99,14 +102,14 @@ export class AppComponent implements OnInit {
       }
     ];
     this.obraVista = Math.floor( Math.random() * this.arrObras.length);
-    this.background_color = 'url("https://firebasestorage.googleapis.com/v0/b/marlo-es.appspot.com/o/' + this.arrObras[this.obraVista].urlImagen + '")';
+    this.imagen_fondo = 'url("' + urlFirebase +  this.arrObras[this.obraVista].urlImagen + '")';
     console.log('obra', this.arrObras[this.obraVista], this.obraVista);
     console.log('lkjdlfkj');
 
     setTimeout(() => {
       console.log('kjdflksdj');
       }, 3000);
-    
+
     // this.items = this.db.list('/obras');
     // console.log('dentro init', this.items);
 

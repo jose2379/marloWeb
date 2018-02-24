@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
     this.arrRedes = [
       {
         titulo: 'FaceBook',
-        urlSalida: 'https://www.facebook.com/maria.lopez.7758235',
+        urlSalida: 'https://www.facebook.com/marlotadas',
         icono: 'facebook-square'
       },
       {
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
       // },
       {
         titulo: 'Gmail',
-        urlSalida: 'mailTo:"marialpz81@hotmial.com',
+        urlSalida: 'mailTo:"marialpz81@hotmail.com',
         icono: 'envelope',
         target: '_self'
       }

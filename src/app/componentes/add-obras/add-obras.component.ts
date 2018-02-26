@@ -18,10 +18,13 @@ export class AddObrasComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('submit', this.task.titulo, this.task.dimension);
     if (this.task.titulo !== '' && this.task.dimension !== '') {
       this.obraSer.addObra(this.task);
       this.task.titulo = '';
       this.task.dimension = '';
+    } else {
+      // this.obraSer.guardarTodas();
     }
   }
 

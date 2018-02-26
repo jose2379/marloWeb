@@ -12,19 +12,25 @@ import { ObrasService } from './servicios/obras.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ObrasComponent } from './componentes/obras/obras.component';
 import { AddObrasComponent } from './componentes/add-obras/add-obras.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { GaleriaComponent } from './componentes/galeria/galeria.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ObrasComponent,
-    AddObrasComponent
+    AddObrasComponent,
+    HomeComponent,
+    GaleriaComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [ObrasService],
   bootstrap: [AppComponent]

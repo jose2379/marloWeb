@@ -1,13 +1,22 @@
 export interface Obra {
-    id?: string;
-    dimension?: string;
-    fecha?: string;
-    key_imagen?: string;
-    tecnica?: string;
-    titulo?: string;
-}
-export interface Imagen {
-    key_obra: string;
-    nombre: string;
-    url: string;
+    id?:            string;
+    dimension?:     string;
+    dimensiones?: {
+        ancho?:         number;
+        alto?:          number;
+        profundidad?:   number;
+    };
+    fechaString?:       string;
+    fecha?:             Date;
+    tecnica?:           string;
+    titulo?:            string;
+    url_imagen?:        string;
+    venta?: {
+        fecha?:         Date;
+        comprador?:     string;
+        precio?:        number;
+        mostrarPrecio?: boolean;
+    }
+    color?:             string;
+    fondoHome?:         boolean;
 }

@@ -1,13 +1,17 @@
-<nav>
-    <div class="nav-wrapper light-blue">
-        <a href="/" class="brand-logo center">
-            Angular App
-        </a>
+<div class="container-fluid p-0 bg-dark">
+  <div class="fixed-top row text-white">
+    <div class="col col-md-6 ml-md-auto gradient-cabecera text-center">
+      <h3 class="pt-3 p-0 m-1">mARLó<br class="d-sm-none d-md-block"><small class="ml-2">Arte Sensorial</small></h3>
     </div>
-</nav>
-<div class="container">
-    <app-add-obras></app-add-obras>
-    <app-obras></app-obras>
+  </div>
+  <router-outlet></router-outlet>
+  <div class="fixed-bottom row text-white">
+    <div class="col-12 col-md-6 ml-md-auto p-1 pt-3 text-center gradient-bottom">
+      <button *ngFor="let red of arrRedes" class="btn bg-transparent text-white" (click)="onRedes(red.urlSalida, red.target)" title="{{red.titulo}}">
+        <fa name="{{red.icono}}" size="2x">{{red.titulo}}</fa>
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- <div class="container-fluid p-0 bg-dark">

@@ -16,10 +16,10 @@ export class ObrasComponent implements OnInit {
 
   ngOnInit() {
     this.editando = false;
-    this.obraSer.getObras().subscribe(obrasTemp => {
-      console.log('obra sub', obrasTemp);
-      this.obras = obrasTemp;
-    });
+    // this.obraSer.getObras().subscribe(obrasTemp => {
+    //   console.log('obra sub', obrasTemp);
+    //   this.obras = obrasTemp;
+    // });
   }
 
   deleteTask(event, task) {

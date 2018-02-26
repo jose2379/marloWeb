@@ -1,21 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
 
-interface Obra {
-  description: string;
-  courseListIcon: string;
-  iconUrl: string;
-  longDescription: string;
-  url: string;
-}
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+
+import { Obra } from '../interfaces/obra';
+
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ObrasService {
 
-  arrObras: Obra[] = [];
+  obrasCollection: AngularFirestoreCollection<Obra>;
+  obras: Observable<Obra[]>;
+  obrasDoc: AngularFirestoreDocument<Obra>;
 
-  constructor() { }
+  constructor(public afs: AngularFirestore) {
+    console.log('contrus');
+    this.obrasCollection = this.afs.collection('obras');
+    this.obras = this.obrasCollection.snapshotChanges().map(changes => {
+      console.log('tenemos cambios', changes);
+      return changes.map(ele => {
+        const data = ele.payload.doc.data() as Obra;
+        data.id = ele.payload.doc.id;
+        return data;
+      });
+    });
+  }
+
+  getObras() {
+    return this.obras;
+  }
+
+  addObra(obra: Obra) {
+    this.obrasCollection.add(obra);
+  }
+
+  deleteObra(obra: Obra) {
+    this.obrasDoc = this.afs.doc(`obras/${obra.id}`);
+    this.obrasDoc.delete();
+  }
+
+  updateObra(obra: Obra) {
+    this.obrasDoc = this.afs.doc(`obras/${obra.id}`);
+    this.obrasDoc.update(obra);
+  }
+
 
   // getObras(): Observable<any[]> {
   //   // return this.db.list('/obras').valueChanges();

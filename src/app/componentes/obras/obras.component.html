@@ -1,0 +1,34 @@
+<div *ngIf="obras?.length > 0;else noObras">
+    <ul *ngFor="let task of obras" class="collection">
+      <li class="collection-item" (dblclick)="deleteTask($event, task)">
+        <strong>{{ task.title }}</strong> : {{ task.description }} 
+        <a href="#" class="secondary-content">
+          <i (click)="deleteTask($event, task)" class="fa fa-trash"></i>
+          <i (click)="editTask($event, task)" class="fa fa-pencil"></i>
+        </a>
+        <div *ngIf="editState && taskToEdit.id === task.id">
+          <form (ngSubmit)="updateTask(task)">
+            <div class="row">
+              <div class="input-field col s6">
+                <input 
+                  type="text" name="title"
+                  placeholder="Edit Title" [(ngModel)]="task.title">
+              </div>
+              <div class="input-field col s6">
+                  <input 
+                    type="text" name="description"
+                    placeholder="Edit Description" [(ngModel)]="task.description">
+              </div>
+              <input type="submit" class="btn" value="Update Task">
+              <button class="btn red" (click)="deleteTask($event, task)">Delete Task</button>
+            </div>
+          </form>
+        </div>
+  
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noObras>
+    <h5>There is not obras yet.</h5>
+  </ng-template>

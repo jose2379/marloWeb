@@ -1,30 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { AngularFireModule } from 'angularfire2';
-
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ObrasService } from './servicios/obras.service';
-import { AlmacenDatosService } from './servicios/almacen-datos.service';
-import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { ObrasService } from './servicios/obras.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ObrasComponent } from './componentes/obras/obras.component';
+import { AddObrasComponent } from './componentes/add-obras/add-obras.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ObrasComponent,
+    AddObrasComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireDatabaseModule,
-    // AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
+    AngularFirestoreModule,
+    FormsModule,
     AngularFontAwesomeModule
   ],
-  providers: [ObrasService, AlmacenDatosService],
+  providers: [ObrasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

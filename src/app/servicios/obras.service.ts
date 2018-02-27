@@ -87,12 +87,12 @@ export class ObrasService {
     this.obrasDoc.update(obra);
   }
 
-  guardarTodas (){
-    let stringObj = JSON.stringify(this.obrasOld);
-    let parsePObj = JSON.parse(stringObj);
-    let cuentaObras = 0;
-    let cuentaImagenes = 0;
-    let cuentaImagenesObra = 0;
+  guardarTodas () {
+    const stringObj = JSON.stringify(this.obrasOld);
+    const parsePObj = JSON.parse(stringObj);
+    const cuentaObras = 0;
+    const cuentaImagenes = 0;
+    const cuentaImagenesObra = 0;
     for(var prop in this.obrasOld) {
       // console.log('OBRAS => prop', prop, 'ele', this.obrasOld[prop]);
       let datosImagen = this.imagesOld[this.obrasOld[prop].key_imagen];
@@ -110,7 +110,7 @@ export class ObrasService {
         obraCompleta.url_imagen = datosImagen.url;
         obraCompleta.venta = {};
         obraCompleta.venta.mostrarPrecio = false;
-        // this.addObra(obraCompleta);
+        this.addObra(obraCompleta);
       }
     }
     for(var prop in this.imagesOld) {

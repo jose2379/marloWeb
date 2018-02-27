@@ -16,7 +16,7 @@ export interface Obra {
         comprador?:     string;
         precio?:        number;
         mostrarPrecio?: boolean;
-    }
+    };
     color?:             string;
     fondoHome?:         boolean;
 }

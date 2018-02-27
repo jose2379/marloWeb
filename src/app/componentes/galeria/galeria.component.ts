@@ -8,10 +8,11 @@ import { ObrasService } from '../../servicios/obras.service';
   styleUrls: ['./galeria.component.scss']
 })
 export class GaleriaComponent implements OnInit {
-  obrasFondo: Obra[];
-  obraVista:      number;
-  imagen_fondo:   string;
-  titulo_fondo:   string;
+  obras: Obra[];
+  obraVista:        number;
+  obrasTotales:     number;
+  imagen_fondo:     string;
+  titulo_fondo:     string;
 
   constructor(public obraSer: ObrasService) { }
 
@@ -19,19 +20,22 @@ export class GaleriaComponent implements OnInit {
     this.obraVista = 0;
     this.obraSer.getObras().subscribe(obrasTemp => {
       console.log('obra sub', obrasTemp);
-      this.obrasFondo = obrasTemp;
-      this.cambiaImagen();
+      this.obras = obrasTemp;
+      this.obrasTotales = this.obras.length - 1;
     });
   }
-  cambiaImagen(siguiente?: boolean){
-    siguiente = siguiente || true;
-    this.imagen_fondo = 'url("' + this.obrasFondo[this.obraVista].url_imagen + '")';
-    this.titulo_fondo = this.obrasFondo[this.obraVista].titulo;
-    setInterval(() => {
-      console.log('siguiente?', siguiente, this.obraVista);
+  verNuevaObra(siguiente: string) {
+    if ( siguiente === 'next' ) {
       this.obraVista++;
-    }, 3000)
-    
+      if ( this.obraVista > this.obrasTotales) this.obraVista = 0;
+    } else {
+      this.obraVista--;
+      if ( this.obraVista < 0 ) this.obraVista = this.obrasTotales;
+    }
+    console.log('obraVista', this.obraVista, siguiente);
+    // setInterval(() => {
+    //   console.log('siguiente?', siguiente, this.obraVista);
+    //   this.obraVista++;
+    // }, 3000);
   }
-
 }

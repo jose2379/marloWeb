@@ -18,12 +18,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.obraSer.getObrasFiltradas('fondoHome', true).subscribe(obrasTemp => {
-      // console.log('obra sub', obrasTemp);
       this.obrasFondo = obrasTemp;
-      this.obraVista = Math.floor( Math.random() * this.obrasFondo.length);
-      // console.log('fondos', this.obrasFondo, this.obraVista, this.obrasFondo[this.obraVista].url_imagen);
-      this.imagen_fondo = 'url("' + this.obrasFondo[this.obraVista].url_imagen + '")';
-      this.titulo_fondo = this.obrasFondo[this.obraVista].titulo;
+      console.log('obra sub', obrasTemp, this.obrasFondo.length);
+      if (this.obrasFondo.length !== 0) {
+        this.obraVista = Math.floor( Math.random() * this.obrasFondo.length);
+        // console.log('fondos', this.obrasFondo, this.obraVista, this.obrasFondo[this.obraVista].url_imagen);
+        this.imagen_fondo = 'url("' + this.obrasFondo[this.obraVista].url_imagen + '")';
+        this.titulo_fondo = this.obrasFondo[this.obraVista].titulo;
+      } else {
+        // this.obraSer.guardarTodas(); // DESCOMENTAR PARA PASAR LAS OBRAS A PRODUCCIÓN!!!!
+      }
     });
   }
 }

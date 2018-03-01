@@ -12,35 +12,48 @@ import { FirebaseApp } from 'angularfire2';
 export class ObrasService {
 
   obrasCollection: AngularFirestoreCollection<Obra>;
+  obrasCollectionFondo: AngularFirestoreCollection<Obra>;
   obras: Observable<Obra[]>;
   obrasDoc: AngularFirestoreDocument<Obra>;
   obrasMostradas: Obra[];
 
   constructor(public afs: AngularFirestore) {
-    console.log('contrus');
     this.obrasCollection = this.afs.collection('obras');
+    this.obrasCollectionFondo = this.afs.collection('obras', ref => ref.where('fondoHome', '==', true));
+    // this.obrasCollection.('fondoHome', '==', true).get()
+        // .then()
+    console.log('contrus', this.obrasCollectionFondo);
   }
 
   getFromFirebase() {
-    this.obrasMostradas = [];
-    this.obras = this.obrasCollection.snapshotChanges().map(changes => {
-      // console.log('tenemos cambios', changes);
+    this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
       return changes.map(ele => {
         const data = ele.payload.doc.data() as Obra;
-        this.obrasMostradas.push(data);
         data.id = ele.payload.doc.id;
-        // console.log('despues del filtro', this.obrasMostradas);
-        // this.subjectObras.next(this.obrasMostradas);
         return data;
       });
     });
-    console.log('getFrom', this.obras, this.obrasMostradas);
   }
 
-  getObras() {
-    console.log('obras', this.obras);
-    this.getFromFirebase();
-    // if (!this.obras) this.getFromFirebase();
+  getObras(filtroFondo?: boolean) {
+    if(filtroFondo) {
+      this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
+        return changes.map(ele => {
+          const data = ele.payload.doc.data() as Obra;
+          data.id = ele.payload.doc.id;
+          return data;
+        });
+      });
+    } else {
+      this.obras = this.obrasCollection.snapshotChanges().map(changes => {
+        return changes.map(ele => {
+          const data = ele.payload.doc.data() as Obra;
+          data.id = ele.payload.doc.id;
+          return data;
+        });
+      });
+
+    }
     return this.obras;
   }
   getObrasFiltradas(filtro: string, valor: any): Observable<Obra[]> {

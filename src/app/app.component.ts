@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { Redes } from './interfaces/redes';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,20 @@ import { Redes } from './interfaces/redes';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'app';
-  arrRedes: Redes[];
+  
+  arrRedes:     Redes[];
+  btnGaleryOn:  boolean;
+  btnHomeOn:    boolean;
 
-  constructor(){
+  constructor(private router: Router) {
+    router.events.subscribe((val: NavigationStart) => {
+      if (val.url !== undefined) {
+        this.btnGaleryOn = val.url !== '/gallery';
+        this.btnHomeOn = val.url !== '/home';
+      }
+    });
+    
+    
     this.arrRedes = [
       {
         titulo: 'FaceBook',

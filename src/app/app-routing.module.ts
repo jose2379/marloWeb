@@ -6,7 +6,7 @@ import { GaleriaComponent } from "./componentes/galeria/galeria.component";
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'galery', component: GaleriaComponent },
+  { path: 'gallery', component: GaleriaComponent },
   { path: '**', redirectTo: 'home' }
 
 ];

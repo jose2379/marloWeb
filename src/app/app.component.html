@@ -1,16 +1,32 @@
-<div class="container-fluid p-0 bg-dark">
+<div class="container-fluid p-0">
   <div class="fixed-top row text-white">
     <div class="col col-md-6 ml-md-auto gradient-cabecera text-center">
       <h3 class="pt-3 p-0 m-1">mARLó<br class="d-sm-none d-md-block"><small class="ml-2">Arte Sensorial</small></h3>
     </div>
   </div>
   <router-outlet></router-outlet>
-  <div class="fixed-bottom row text-white">
-    <div class="col-12 col-md-6 ml-md-auto p-1 pt-3 text-center gradient-bottom">
+  <div class="fixed-bottom row text-white gradient-bottom">
+    <div *ngIf="btnHomeOn" class="col-3 text-center p-1 pt-3" routerLink="/home">
+      <button class="btn bg-transparent text-white">
+        <fa name="arrow-left">Gallery</fa>
+        <fa name="home" size="2x">Home</fa>
+      </button>
+    </div>
+    <div class="col-6 m-auto p-1 pt-3 text-center ">
       <button *ngFor="let red of arrRedes" class="btn bg-transparent text-white" (click)="onRedes(red.urlSalida, red.target)" title="{{red.titulo}}">
         <fa name="{{red.icono}}" size="2x">{{red.titulo}}</fa>
       </button>
     </div>
+    <div *ngIf="btnGaleryOn" class="col-3 text-center p-1 pt-3" routerLink="/gallery">
+      <button class="btn bg-transparent text-white">
+        <fa name="paint-brush" size="2x">Gallery</fa>
+        <fa name="arrow-right">Gallery</fa>
+      </button>
+    </div>
+    <!-- <span class="fa-stack fa-lg">
+        <i class="fa fa-camera fa-stack-1x"></i>
+        <i class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></i>
+      </span> -->
   </div>
 </div>
 

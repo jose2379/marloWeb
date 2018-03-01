@@ -5,9 +5,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Obra } from '../interfaces/obra';
 
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
 
 import { FirebaseApp } from 'angularfire2';
 
@@ -19,26 +16,31 @@ export class ObrasService {
   obrasDoc: AngularFirestoreDocument<Obra>;
   obrasMostradas: Obra[];
 
-  fondoHome$: BehaviorSubject<string|null>;
-
   constructor(public afs: AngularFirestore) {
     console.log('contrus');
     this.obrasCollection = this.afs.collection('obras');
   }
 
-  getFromFirebase(){
+  getFromFirebase() {
+    this.obrasMostradas = [];
     this.obras = this.obrasCollection.snapshotChanges().map(changes => {
-      console.log('tenemos cambios', changes);
+      // console.log('tenemos cambios', changes);
       return changes.map(ele => {
         const data = ele.payload.doc.data() as Obra;
+        this.obrasMostradas.push(data);
         data.id = ele.payload.doc.id;
+        // console.log('despues del filtro', this.obrasMostradas);
+        // this.subjectObras.next(this.obrasMostradas);
         return data;
       });
     });
+    console.log('getFrom', this.obras, this.obrasMostradas);
   }
 
   getObras() {
-    if(!this.obras) this.getFromFirebase(); 
+    console.log('obras', this.obras);
+    this.getFromFirebase();
+    // if (!this.obras) this.getFromFirebase();
     return this.obras;
   }
   getObrasFiltradas(filtro: string, valor: any): Observable<Obra[]> {
@@ -61,8 +63,6 @@ export class ObrasService {
     this.obras = filtroObras.valueChanges();
     console.log('obrasCollection fsdf', this.obras);
     return this.obras;
-    
-    
     // this.obras = this.obrasCollection.snapshotChanges().filter()
     // .list('/books', {
     //     query: {

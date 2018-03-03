@@ -12,27 +12,11 @@ import { FirebaseApp } from 'angularfire2';
 export class ObrasService {
 
   obrasCollection: AngularFirestoreCollection<Obra>;
-  // obrasCollectionFondo: AngularFirestoreCollection<Obra>;
   obras: Observable<Obra[]>;
   obrasDoc: AngularFirestoreDocument<Obra>;
   obrasMostradas: Obra[];
 
-  constructor(public afs: AngularFirestore) {
-    // this.obrasCollectionFondo = this.afs.collection('obras', ref => ref.where('fondoHome', '==', true));
-    // this.obrasCollection.('fondoHome', '==', true).get()
-        // .then()
-    console.log('contrus', this.obrasCollection);
-  }
-
-  // getFromFirebase() {
-  //   this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
-  //     return changes.map(ele => {
-  //       const data = ele.payload.doc.data() as Obra;
-  //       data.id = ele.payload.doc.id;
-  //       return data;
-  //     });
-  //   });
-  // }
+  constructor(public afs: AngularFirestore) { }
 
   getObrasFiltro(filtro:string, valor?: string | boolean) {
     valor = (valor === undefined) ? true : (valor === 'false') ? false : (valor === 'true') ? true : valor;
@@ -67,7 +51,6 @@ export class ObrasService {
     // })
     return this.obras;
   }
-  
 
   addObra(obra: Obra) {
     console.log('addObra');

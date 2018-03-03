@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     this.obraSer.getObrasFiltro('fondoHome').subscribe(obrasTemp => {
       this.obrasFondo = obrasTemp;
       const longObras = obrasTemp.length;
-      console.log('longobras', longObras, this.obrasFondo);
       if (longObras !== 0) {
         this.obraVista = Math.floor( Math.random() * this.obrasFondo.length);
         this.imagen_fondo = 'url("' + this.obrasFondo[this.obraVista].url_imagen + '")';

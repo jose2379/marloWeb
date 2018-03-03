@@ -12,78 +12,62 @@ import { FirebaseApp } from 'angularfire2';
 export class ObrasService {
 
   obrasCollection: AngularFirestoreCollection<Obra>;
-  obrasCollectionFondo: AngularFirestoreCollection<Obra>;
+  // obrasCollectionFondo: AngularFirestoreCollection<Obra>;
   obras: Observable<Obra[]>;
   obrasDoc: AngularFirestoreDocument<Obra>;
   obrasMostradas: Obra[];
 
   constructor(public afs: AngularFirestore) {
-    this.obrasCollection = this.afs.collection('obras');
-    this.obrasCollectionFondo = this.afs.collection('obras', ref => ref.where('fondoHome', '==', true));
+    // this.obrasCollectionFondo = this.afs.collection('obras', ref => ref.where('fondoHome', '==', true));
     // this.obrasCollection.('fondoHome', '==', true).get()
         // .then()
-    console.log('contrus', this.obrasCollectionFondo);
+    console.log('contrus', this.obrasCollection);
   }
 
-  getFromFirebase() {
-    this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
+  // getFromFirebase() {
+  //   this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
+  //     return changes.map(ele => {
+  //       const data = ele.payload.doc.data() as Obra;
+  //       data.id = ele.payload.doc.id;
+  //       return data;
+  //     });
+  //   });
+  // }
+
+  getObrasFiltro(filtro:string, valor?: string | boolean) {
+    valor = (valor === undefined) ? true : (valor === 'false') ? false : (valor === 'true') ? true : valor;
+    this.obrasCollection = this.afs.collection('obras', ref => ref.where(filtro, '==', valor));
+    this.obras = this.obrasCollection.snapshotChanges().map(changes => {
       return changes.map(ele => {
         const data = ele.payload.doc.data() as Obra;
         data.id = ele.payload.doc.id;
         return data;
       });
     });
+    console.log('this.obras', this.obras);
+    return this.obras;
   }
 
-  getObras(filtroFondo?: boolean) {
-    if(filtroFondo) {
-      this.obras = this.obrasCollectionFondo.snapshotChanges().map(changes => {
-        return changes.map(ele => {
-          const data = ele.payload.doc.data() as Obra;
-          data.id = ele.payload.doc.id;
-          return data;
-        });
-      });
+  getObras(limitado?: number) {
+    if(limitado !== undefined) {
+      this.obrasCollection = this.afs.collection('obras', ref => ref.limit(limitado));
     } else {
-      this.obras = this.obrasCollection.snapshotChanges().map(changes => {
-        return changes.map(ele => {
-          const data = ele.payload.doc.data() as Obra;
-          data.id = ele.payload.doc.id;
-          return data;
-        });
-      });
-
+      this.obrasCollection = this.afs.collection('obras');
     }
+    this.obras = this.obrasCollection.snapshotChanges().map(changes => {
+      return changes.map(ele => {
+        const data = ele.payload.doc.data() as Obra;
+        data.id = ele.payload.doc.id;
+        return data;
+      });
+    });
+    // Estudiar que nos interesa más si el snapshotChanges() o el valueChanges();
+    // this.obrasCollection.valueChanges().subscribe(obras => {
+    //   console.log('valueChangesAdded', obras);
+    // })
     return this.obras;
   }
-  getObrasFiltradas(filtro: string, valor: any): Observable<Obra[]> {
-
-    const query = this.obrasCollection.ref.where(filtro, '==', valor);
-    const filtroObras = new AngularFirestoreCollection<Obra>(this.obrasCollection.ref, query);
-    // filtroObras.valueChanges().subscribe(value => {
-    //     console.log('value', value);
-    //     const obrasFiltradas: Obra[] = [];
-    //     return value.map(ele => {
-    //       obrasFiltradas.push(ele);
-    //       console.log('ele', ele);
-    //       // return obrasFiltradas;
-    //       // const data = ele.payload.doc.data() as Obra;
-    //       // data.id = ele.payload.doc.id;
-    //       // return data;
-    //     });
-    //   }
-    // );
-    this.obras = filtroObras.valueChanges();
-    console.log('obrasCollection fsdf', this.obras);
-    return this.obras;
-    // this.obras = this.obrasCollection.snapshotChanges().filter()
-    // .list('/books', {
-    //     query: {
-    //         orderByChild: 'title',
-    //         equalTo: 'My book #1',
-    //     }
-    // });
-}
+  
 
   addObra(obra: Obra) {
     console.log('addObra');

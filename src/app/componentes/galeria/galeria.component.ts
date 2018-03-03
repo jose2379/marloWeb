@@ -8,18 +8,28 @@ import { ObrasService } from '../../servicios/obras.service';
   styleUrls: ['./galeria.component.scss']
 })
 export class GaleriaComponent implements OnInit {
-  obras: Obra[];
-  obraVista:        number;
+  obras:            Obra[];
+  obrasVistas:      number;
   obrasTotales:     number;
-  imagen_fondo:     string;
-  titulo_fondo:     string;
+  btnVerMasOn:      boolean;
 
   constructor(public obraSer: ObrasService) { }
 
   ngOnInit() {
+    this.btnVerMasOn = true;
+    this.obrasVistas = 10;
     this.obras = [];
-    this.obraSer.getObras().subscribe(obrasTemp => {
+    this.verObras();
+  }
+  verMas() {
+    this.obrasVistas += 10;
+    this.verObras();
+  }
+  verObras() {
+    this.obraSer.getObras(this.obrasVistas).subscribe(obrasTemp => {
       this.obras = obrasTemp;
+      this.obrasTotales = this.obras.length;
+      this.btnVerMasOn = (this.obrasTotales % 10) === 0;
     });
   }
   verNuevaObra(siguiente: string) {

@@ -21,9 +21,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.obrasFondo = [];
-    this.obraSer.getObras(true).subscribe(obrasTemp => {
+    this.obraSer.getObrasFiltro('fondoHome').subscribe(obrasTemp => {
       this.obrasFondo = obrasTemp;
-      if (this.obrasFondo.length !== 0) {
+      const longObras = obrasTemp.length;
+      console.log('longobras', longObras, this.obrasFondo);
+      if (longObras !== 0) {
         this.obraVista = Math.floor( Math.random() * this.obrasFondo.length);
         this.imagen_fondo = 'url("' + this.obrasFondo[this.obraVista].url_imagen + '")';
         this.titulo_fondo = this.obrasFondo[this.obraVista].titulo;

@@ -10,7 +10,6 @@ import { Router, NavigationStart } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  
   arrRedes:     Redes[];
   btnGaleryOn:  boolean;
   btnHomeOn:    boolean;
@@ -19,11 +18,9 @@ export class AppComponent {
     router.events.subscribe((val: NavigationStart) => {
       if (val.url !== undefined) {
         this.btnGaleryOn = val.url !== '/gallery';
-        this.btnHomeOn = val.url !== '/home';
+        this.btnHomeOn = (val.url !== '/home' && val.url !== '/');
       }
     });
-    
-    
     this.arrRedes = [
       {
         titulo: 'FaceBook',

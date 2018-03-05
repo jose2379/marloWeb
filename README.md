@@ -28,6 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 http://marlo-es.com/nuevoDiseno/
 
-ng build -prod --build-optimizer --output-hashing
+ng build -prod --build-optimizer
 
 npm install angularfire2 firebase --save

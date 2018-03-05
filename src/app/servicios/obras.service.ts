@@ -51,6 +51,36 @@ export class ObrasService {
     // })
     return this.obras;
   }
+  getObraById(idObra: string) {
+    const ref = this.afs.collection('obras').doc(idObra).snapshotChanges();
+    // ref.set({id: ref.id})  // sets the contents of the doc using the id
+    // .then(() => {  // fetch the doc again and show its data
+    //     ref.get().then(doc => {
+    //         console.log(doc.data())  // prints {id: "the unique id"}
+    //     })
+    // })
+    // this.obrasCollection = this.afs.collection('obras' + idObra);
+  //   this.afs.collection('obras', ref => ref.doc(idObra).get().then)
+  //   .ref( ref => ref.w)
+  //     .get().then(function(doc) {
+  //     if (doc.exists) {
+  //         console.log("Document data:", doc.data());
+  //     } else {
+  //         console.log("No such document!");
+  //     }
+  // }).catch(function(error) {
+  //     console.log("Error getting document:", error);
+  // })
+    // this.obras = this.obrasCollection.snapshotChanges().map(changes => {
+    //   return changes.map(ele => {
+    //     const data = ele.payload.doc.data() as Obra;
+    //     data.id = ele.payload.doc.id;
+    //     return data;
+    //   });
+    // });
+    // console.log('getObraById', this.obrasCollection, this.obras, idObra);
+    return ref;
+  }
 
   addObra(obra: Obra) {
     console.log('addObra');

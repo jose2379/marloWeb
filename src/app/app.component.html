@@ -23,6 +23,11 @@
         <fa name="arrow-right">Gallery</fa>
       </button>
     </div>
+    <div *ngIf="btnCloseOn" class="col-3 text-center p-1 pt-3" routerLink="/gallery">
+      <button class="btn bg-transparent text-white">
+        <fa name="close" size="2x">Gallery</fa>
+      </button>
+    </div>
     <!-- <span class="fa-stack fa-lg">
         <i class="fa fa-camera fa-stack-1x"></i>
         <i class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></i>

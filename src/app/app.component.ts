@@ -13,12 +13,20 @@ export class AppComponent {
   arrRedes:     Redes[];
   btnGaleryOn:  boolean;
   btnHomeOn:    boolean;
+  btnCloseOn:   boolean;
 
   constructor(private router: Router) {
     router.events.subscribe((val: NavigationStart) => {
       if (val.url !== undefined) {
-        this.btnGaleryOn = val.url !== '/gallery';
-        this.btnHomeOn = (val.url !== '/home' && val.url !== '/');
+        console.log('val.rul', val.id, val.url.split('/').length);
+        this.btnCloseOn = val.url.split('/').length >= 3;
+        if (!this.btnCloseOn) {
+          this.btnGaleryOn = val.url !== '/gallery';
+          this.btnHomeOn = (val.url !== '/home' && val.url !== '/');
+        } else {
+          this.btnGaleryOn = false;
+          this.btnHomeOn = true;
+        }
       }
     });
     this.arrRedes = [

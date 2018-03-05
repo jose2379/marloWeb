@@ -32,6 +32,9 @@ export class GaleriaComponent implements OnInit {
       this.btnVerMasOn = (this.obrasTotales % 10) === 0;
     });
   }
+  verDetalle(obra: Obra) {
+    console.log('dentro de obra', obra);
+  }
   verNuevaObra(siguiente: string) {
   }
 }

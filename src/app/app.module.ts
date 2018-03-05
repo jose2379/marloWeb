@@ -14,6 +14,7 @@ import { ObrasComponent } from './componentes/obras/obras.component';
 import { AddObrasComponent } from './componentes/add-obras/add-obras.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { GaleriaComponent } from './componentes/galeria/galeria.component';
+import { DetalleObraComponent } from './componentes/galeria/detalle-obra/detalle-obra.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     ObrasComponent,
     AddObrasComponent,
     HomeComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    DetalleObraComponent
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,11 @@
   <div class="row pt-5">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 position-relative" *ngFor="let obra of obras" [routerLink]="[obra.id]">
       <div class="row w-100 position-absolute p-1">
-        <div class="col-12">
+        <!-- <div class="col-12">
           <h6 class="text-truncate m-0">
             {{ obra.titulo }}
           </h6>
-        </div>
+        </div> -->
       </div>
       <img class="d-block w-100 mb-4" src="{{ obra.url_imagen }}" alt="{{ obra.titulo }}">
     </div>

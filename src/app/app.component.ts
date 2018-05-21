@@ -32,7 +32,7 @@ export class AppComponent {
     this.arrRedes = [
       {
         titulo: 'FaceBook',
-        urlSalida: 'https://www.facebook.com/marlotadas',
+        urlSalida: 'https://www.facebook.com/sensorialismo',
         icono: 'facebook-square'
       },
       {

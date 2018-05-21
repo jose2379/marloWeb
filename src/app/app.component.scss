@@ -2,7 +2,6 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-color: black
 }
 .gradient-cabecera{
     background: -moz-linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(0,0,0, 0.8) 30%, rgba(0,0,0, 0.6) 80%, rgba(0,0,0, 0) 100%); /* FF3.6-15 */
@@ -31,4 +30,13 @@
   @extend .foto-fondo;
   background-image: url('../assets/images/foto_home.jpg');
   margin-left: 25%;
+}
+svg{
+  fill: #860930;
+}
+.bg-alfa{
+  background-color: rgba(245, 245, 240, 0.8);
+}
+.text-morado{
+  color: #860930 !important;
 }

@@ -8,7 +8,6 @@ export class AlmacenDatosService {
 
   getObras() {
     console.log('detro de getOras');
-    
   //   this.http.get('https://marlo-es.firebaseio.com/obras.json').map(
   //     (respuesta: Response) => {
   //       console.log('repuseta', respuesta.json());
